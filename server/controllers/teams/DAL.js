@@ -8,6 +8,14 @@ const findAllTeams = async () => {
     throw error;
   }
 };
+const findUSERAllTeams = async (id) => {
+  try {
+    const teams = await teamSchema.find({"teamMembers":id});
+    return teams;
+  } catch (error) {
+    throw error;
+  }
+};
 
 const findTeamById = async (id) => {
   try {
@@ -51,5 +59,6 @@ module.exports = {
   findTeamById,
   createOneTeam,
   updateOneTeam,
-  deleteOneTeam
+  deleteOneTeam,
+  findUSERAllTeams
 };
