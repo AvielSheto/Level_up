@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
   email: String,
   password: String,
   role: String,
-  score: [String],
+  score: [Object],
   project: { type: [mongoose.Types.ObjectId], ref: "projects" },
 });
 
