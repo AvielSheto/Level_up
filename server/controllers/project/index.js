@@ -4,11 +4,17 @@ const {
   createOneProject,
   updateOneProject,
   deleteOneProject,
+  findProjectByTeamId,
 } = require("./DAL");
 
 const getAllProjects = async (req, res, next) => {
   try {
-    const projects = await findAllProjects();
+    let projects = [];
+    if (req.query.teamId) {
+      projects = await findProjectByTeamId(req.query.teamId);
+    } else {
+      projects = await findAllProjects();
+    }
     res.status(200).json(projects);
   } catch (err) {
     next(err);
