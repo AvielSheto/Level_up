@@ -9,6 +9,14 @@ const findAllProjects = async () => {
   }
 };
 
+const findProjectByTeamId = async (id) => {
+  try {
+    const projects = await projectSchema.find({"teams":id});
+    return projects;
+  } catch (error) {
+    throw error;
+  }
+};
 const findProjectById = async (id) => {
   try {
     const project = await projectSchema.findById(id);
@@ -51,5 +59,6 @@ module.exports = {
   findProjectById,
   createOneProject,
   updateOneProject,
-  deleteOneProject
+  deleteOneProject,
+  findProjectByTeamId
 };
