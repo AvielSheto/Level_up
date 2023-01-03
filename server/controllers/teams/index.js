@@ -4,11 +4,18 @@ const {
   createOneTeam,
   updateOneTeam,
   deleteOneTeam,
+  findUSERAllTeams,
 } = require("./DAL");
 
 const getAllTeams = async (req, res, next) => {
   try {
-    const teams = await findAllTeams();
+    let teams = [];
+    if (req.query.userId) {
+      teams = await findUSERAllTeams(req.query.userId);
+    }else{
+
+      teams = await findAllTeams();
+    }
     res.status(200).json(teams);
   } catch (err) {
     next(err);

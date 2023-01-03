@@ -1,12 +1,15 @@
-import './App.css';
-import AllTeam from './Components/AllTeam';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AllMission from './Components/AllMission';
+import Home from './pages/Home';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-<AllTeam/>
-    </div>
-  );
+    <Router>
+      <Routes>
+        <Route path='AllMissions' element={<AllMission/>}/>
+        <Route path='' element={<Home/>}/>
+      </Routes>
+    </Router>
+  )
 }
-
-export default App;
